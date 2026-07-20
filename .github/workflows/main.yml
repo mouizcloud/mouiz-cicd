@@ -1,0 +1,24 @@
+name: MouizCloud CI/CD
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 جلب الكود
+        uses: actions/checkout@v3
+
+      - name: 🐍 تثبيت Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: 🧪 تشغيل الاختبارات
+        run: python test_app.py
+
+      - name: ✅ نجح كل شيء
+        run: echo "الكود سليم وجاهز للنشر"
